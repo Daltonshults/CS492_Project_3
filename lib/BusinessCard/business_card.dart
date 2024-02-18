@@ -53,19 +53,6 @@ class _BusinessCardState extends State<BusinessCard> {
     );
   }
 
-  // paddedPlaceHolder(const EdgeInsets.fromLTRB(0.0, 45.0, 0.0, 5.0)),
-  // paddingText(widget.name, const EdgeInsets.all(8.0),
-  //     const TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
-  // paddingText(widget.title, const EdgeInsets.all(6.0),
-  //     const TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
-  // paddingText(widget.phoneNumber, const EdgeInsets.all(6.0),
-  //     const TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
-  // paddedDoubleTextRow(
-  //     widget.github,
-  //     widget.email,
-  //     const EdgeInsets.all(6.0),
-  //     const TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
-
   Row _buildLandscapeLayout() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
