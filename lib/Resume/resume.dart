@@ -22,12 +22,15 @@ class _ResumeCardState extends State<ResumeCard> {
     return Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          Row(children: [portraitNamePlate()]),
           Expanded(
               child: ListView.builder(
                   itemCount: 20,
                   itemBuilder: (BuildContext context, int index) {
-                    return ListTile(title: experienceListing());
+                    if (index == 0) {
+                      return portraitNamePlate();
+                    } else {
+                      return ListTile(title: experienceListing());
+                    }
                   }))
         ]);
   }
