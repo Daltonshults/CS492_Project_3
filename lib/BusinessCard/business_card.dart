@@ -19,10 +19,10 @@ class BusinessCard extends StatefulWidget {
       : super(key: key);
 
   @override
-  _BusinessCardState createState() => _BusinessCardState();
+  BusinessCardState createState() => BusinessCardState();
 }
 
-class _BusinessCardState extends State<BusinessCard> {
+class BusinessCardState extends State<BusinessCard> {
   final basicTextStyle =
       const TextStyle(fontSize: 14, fontWeight: FontWeight.w600);
   final basicInsets = const EdgeInsets.all(8.0);
@@ -75,7 +75,7 @@ class _BusinessCardState extends State<BusinessCard> {
         }
       },
       child: PaddedText(
-          text: "HELLO",
+          text: widget.phoneNumber,
           edgeInsets: const EdgeInsets.all(6.0),
           style: basicTextStyle),
     );
