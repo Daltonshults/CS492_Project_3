@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:url_launcher/url_launcher.dart';
 import '../BoxPlaceholder/box_placeholder.dart';
 
 class PaddedText extends StatefulWidget {
@@ -66,6 +67,66 @@ class _PaddedDoubleTextState extends State<PaddedDoubleText> {
             widget.text2,
             style: widget.style,
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class PaddedDoubleTextLinks extends StatefulWidget {
+  final String text1;
+  final String text2;
+  final EdgeInsets edgeInsets;
+  final TextStyle style;
+
+  const PaddedDoubleTextLinks(
+      {super.key,
+      required this.text1,
+      required this.text2,
+      required this.edgeInsets,
+      required this.style});
+
+  @override
+  State<PaddedDoubleTextLinks> createState() => _PaddedDoubleLinksTextState();
+}
+
+class _PaddedDoubleLinksTextState extends State<PaddedDoubleTextLinks> {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: widget.edgeInsets,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          GestureDetector(
+            onTap: () async {
+              final url = Uri.parse("http://${widget.text1}");
+              if (await canLaunchUrl(url)) {
+                await launchUrl(url);
+              } else {
+                throw 'Could not launch $url';
+              }
+            },
+            child: Text(
+              widget.text1,
+              style: widget.style,
+            ),
+          ),
+          const SizedBox(width: 30.0),
+          GestureDetector(
+            onTap: () async {
+              final url = Uri.parse("http://${widget.text2}");
+              if (await canLaunchUrl(url)) {
+                await launchUrl(url);
+              } else {
+                throw 'Could not launch $url';
+              }
+            },
+            child: Text(
+              widget.text2,
+              style: widget.style,
+            ),
+          )
         ],
       ),
     );
