@@ -35,10 +35,21 @@ class _ResumeCardState extends State<ResumeCard> {
         ]);
   }
 
-  Row _buildLandscapeLayout() {
-    return Row(
+  Column _buildLandscapeLayout() {
+    return Column(
         mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[Text("Resume")]);
+        children: <Widget>[
+          Expanded(
+              child: ListView.builder(
+                  itemCount: 20,
+                  itemBuilder: (BuildContext context, int index) {
+                    if (index == 0) {
+                      return portraitNamePlate();
+                    } else {
+                      return ListTile(title: experienceListing());
+                    }
+                  }))
+        ]);
   }
 
   Widget portraitNamePlate() {
@@ -118,8 +129,6 @@ class _ResumeCardState extends State<ResumeCard> {
   }
 
   Widget experienceListing() {
-    double screenWidth = MediaQuery.of(context).size.width * .75;
-
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-//import '../BoxPlaceholder/box_placeholder.dart';
 import '../PaddedWidgets/padded_text.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class BusinessCard extends StatefulWidget {
   final String name;
@@ -53,16 +53,31 @@ class _BusinessCardState extends State<BusinessCard> {
             text: widget.title,
             edgeInsets: const EdgeInsets.all(6.0),
             style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
-        PaddedText(
-            text: widget.phoneNumber,
-            edgeInsets: const EdgeInsets.all(6.0),
-            style: basicTextStyle),
-        PaddedDoubleText(
+        phoneNumberField(),
+        PaddedDoubleTextLinks(
             text1: widget.github,
             text2: widget.email,
             edgeInsets: const EdgeInsets.all(6.0),
             style: basicTextStyle),
       ],
+    );
+  }
+
+  GestureDetector phoneNumberField() {
+    return GestureDetector(
+      // Works on my phone, but not on the emulator.
+      onTap: () async {
+        final url = 'sms:${widget.phoneNumber.replaceAll(' ', '')}';
+        if (await canLaunchUrl(Uri.parse(url))) {
+          await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
+        } else {
+          throw 'Could not launch $url';
+        }
+      },
+      child: PaddedText(
+          text: "HELLO",
+          edgeInsets: const EdgeInsets.all(6.0),
+          style: basicTextStyle),
     );
   }
 

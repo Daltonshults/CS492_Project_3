@@ -1,3 +1,4 @@
+//import 'package:call_me_maybe/Predictor/predictor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'BusinessCard/business_card.dart';
@@ -63,18 +64,18 @@ class _MyHomePageState extends State<MyHomePage> {
               email: "jsmith@example.com",
             ),
             ResumeCard(),
-            Text("Tab 3")
+            Text("TEST"),
           ]),
     );
   }
 
   AppBar appNavBar(BuildContext context) {
     return AppBar(
-      backgroundColor: Color.fromARGB(255, 108, 145, 167),
+      backgroundColor: const Color.fromARGB(255, 108, 145, 167),
       title: Center(
           child: Text(
         widget.title,
-        style: TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.white),
       )),
       bottom: const TabBar(tabs: [
         Tab(child: Icon(Icons.person_sharp)),
