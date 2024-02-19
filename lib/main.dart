@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'BusinessCard/business_card.dart';
+import 'Resume/resume.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -61,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
               github: "github.com/jsmith",
               email: "jsmith@example.com",
             ),
-            Text("Tab 2"),
+            ResumeCard(),
             Text("Tab 3")
           ]),
     );

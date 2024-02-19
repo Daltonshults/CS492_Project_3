@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../BoxPlaceholder/box_placeholder.dart';
+//import '../BoxPlaceholder/box_placeholder.dart';
+import '../PaddedWidgets/padded_text.dart';
 
 class BusinessCard extends StatefulWidget {
   final String name;
@@ -22,6 +23,10 @@ class BusinessCard extends StatefulWidget {
 }
 
 class _BusinessCardState extends State<BusinessCard> {
+  final basicTextStyle =
+      const TextStyle(fontSize: 14, fontWeight: FontWeight.w600);
+  final basicInsets = const EdgeInsets.all(8.0);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,19 +41,27 @@ class _BusinessCardState extends State<BusinessCard> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
-        paddedPlaceHolder(
-            const EdgeInsets.fromLTRB(0.0, 45.0, 0.0, 5.0), 50.0, 50.0),
-        paddingText(widget.name, const EdgeInsets.all(8.0),
-            const TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
-        paddingText(widget.title, const EdgeInsets.all(6.0),
-            const TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
-        paddingText(widget.phoneNumber, const EdgeInsets.all(6.0),
-            const TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
-        paddedDoubleTextRow(
-            widget.github,
-            widget.email,
-            const EdgeInsets.all(6.0),
-            const TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
+        const PaddedPlaceHolder(
+            edgeInsets: EdgeInsets.fromLTRB(0.0, 45.0, 0.0, 5.0),
+            boxHeight: 50.0,
+            boxWidth: 50.0),
+        PaddedText(
+            text: widget.name,
+            edgeInsets: basicInsets,
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
+        PaddedText(
+            text: widget.title,
+            edgeInsets: const EdgeInsets.all(6.0),
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
+        PaddedText(
+            text: widget.phoneNumber,
+            edgeInsets: const EdgeInsets.all(6.0),
+            style: basicTextStyle),
+        PaddedDoubleText(
+            text1: widget.github,
+            text2: widget.email,
+            edgeInsets: const EdgeInsets.all(6.0),
+            style: basicTextStyle),
       ],
     );
   }
@@ -57,69 +70,44 @@ class _BusinessCardState extends State<BusinessCard> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
-        Column(
+        const Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            paddedPlaceHolder(
-                EdgeInsets.fromLTRB(50.0, 10.0, 50.0, 10.0), 160.0, 160.0),
+            PaddedPlaceHolder(
+                edgeInsets: EdgeInsets.fromLTRB(50.0, 10.0, 50.0, 10.0),
+                boxHeight: 160.0,
+                boxWidth: 160.0),
           ],
         ),
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            paddingText(widget.name, const EdgeInsets.all(8.0),
-                const TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
-            paddingText(widget.title, const EdgeInsets.all(6.0),
-                const TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
-            paddingText(widget.phoneNumber, const EdgeInsets.all(6.0),
-                const TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
-            paddingText(widget.github, EdgeInsets.all(8.0),
-                TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
-            paddingText(widget.email, EdgeInsets.all(8.0),
-                TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
+            PaddedText(
+                text: widget.name,
+                edgeInsets: basicInsets,
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
+            PaddedText(
+                text: widget.title,
+                edgeInsets: const EdgeInsets.all(6.0),
+                style:
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
+            PaddedText(
+                text: widget.phoneNumber,
+                edgeInsets: const EdgeInsets.all(6.0),
+                style: basicTextStyle),
+            PaddedText(
+                text: widget.github,
+                edgeInsets: basicInsets,
+                style: basicTextStyle),
+            PaddedText(
+                text: widget.email,
+                edgeInsets: basicInsets,
+                style: basicTextStyle),
           ],
         )
       ],
-    );
-  }
-
-  Padding paddingText(String text, EdgeInsets edgeInsets, TextStyle style) {
-    return Padding(
-      padding: edgeInsets,
-      child: Text(
-        text,
-        style: style,
-      ),
-    );
-  }
-
-  Padding paddedDoubleTextRow(
-      String text1, String text2, EdgeInsets edgeInsets, TextStyle style) {
-    return Padding(
-      padding: edgeInsets,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            text1,
-            style: style,
-          ),
-          const SizedBox(width: 30.0),
-          Text(
-            text2,
-            style: style,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Container paddedPlaceHolder(
-      EdgeInsets edgeInsets, double? boxheight, double? boxwidth) {
-    return Container(
-      padding: edgeInsets,
-      child: BoxPlaceHolder(height: boxwidth, width: boxwidth, text: "image"),
     );
   }
 }
