@@ -1,4 +1,5 @@
 //import 'package:call_me_maybe/Predictor/predictor.dart';
+import 'package:call_me_maybe/Predictor/predictor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'BusinessCard/business_card.dart';
@@ -50,21 +51,21 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appNavBar(context),
-      body: const TabBarView(
+      body: TabBarView(
           // USE THE CHILDREN HERE TO LOAD UP THE SEPARATE VEIWS
           // NEED ONE THAT DISPLAYS PERSONAL INFO/BUSINESS CARD
           // SECOND ONE IS RESUME LISTING, AND LISTVIEW
           // THIRD ONE IS THE RANDOM GENERATOR/PREDICTOR
           children: [
-            BusinessCard(
+            const BusinessCard(
               name: "Jane Smith",
               title: "Developer Extraordinaire",
               phoneNumber: "555 555 55555",
               github: "github.com/jsmith",
               email: "jsmith@example.com",
             ),
-            ResumeCard(),
-            Text("TEST"),
+            const ResumeCard(),
+            Predictor(),
           ]),
     );
   }
