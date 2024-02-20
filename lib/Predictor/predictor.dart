@@ -24,6 +24,7 @@ class Predictor extends StatefulWidget {
 
 class _PredictorState extends State<Predictor> {
   int predictor = 0;
+  String prediction = "Ask a question... tap for the answer.";
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +62,7 @@ class _PredictorState extends State<Predictor> {
           PaddedText(
               edgeInsets: EdgeInsets.all(0.0),
               text: "Maybe indeed.",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal))
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.normal))
         ],
       )
     ]));
@@ -72,15 +73,29 @@ class _PredictorState extends State<Predictor> {
   }
 
   Widget predictorButton() {
-    return ElevatedButton(
-      onPressed: randomPrediction,
-      child: Text(widget.magic8BallResponses[predictor]),
+    return GestureDetector(
+      onTap: randomPrediction,
+      child: Center(
+        child: Container(
+          width: MediaQuery.of(context).size.width * 0.8, // 80% of screen width
+          child: PaddedText(
+            textAlign: TextAlign.center,
+            edgeInsets: EdgeInsets.only(
+              top: .05 * MediaQuery.of(context).size.height,
+              bottom: 0.05 * MediaQuery.of(context).size.height,
+            ),
+            text: prediction,
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
+          ),
+        ),
+      ),
     );
   }
 
   void randomPrediction() {
     setState(() {
       predictor = widget.rng.nextInt(widget.magic8BallResponses.length);
+      prediction = widget.magic8BallResponses[predictor];
     });
   }
 }

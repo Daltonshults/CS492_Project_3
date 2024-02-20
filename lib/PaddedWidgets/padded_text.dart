@@ -33,6 +33,38 @@ class _PaddedTextState extends State<PaddedText> {
   }
 }
 
+class PaddedTextWrap extends StatefulWidget {
+  final String text;
+  final EdgeInsets edgeInsets;
+  final TextStyle style;
+  final TextAlign? textAlign;
+
+  const PaddedTextWrap(
+      {super.key,
+      required this.text,
+      required this.edgeInsets,
+      required this.style,
+      this.textAlign});
+
+  @override
+  State<PaddedTextWrap> createState() => _PaddedTextWrapState();
+}
+
+class _PaddedTextWrapState extends State<PaddedTextWrap> {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: widget.edgeInsets,
+      child: Text(
+        widget.text,
+        style: widget.style,
+        textAlign: widget.textAlign,
+        softWrap: true,
+      ),
+    );
+  }
+}
+
 class PaddedDoubleText extends StatefulWidget {
   final String text1;
   final String text2;

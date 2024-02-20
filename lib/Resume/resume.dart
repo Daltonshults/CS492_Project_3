@@ -59,15 +59,15 @@ class _ResumeCardState extends State<ResumeCard> {
       children: <Widget>[
         PaddedText(
             text: "Jane Smith",
-            edgeInsets: EdgeInsets.fromLTRB(8.0, 15.0, 0.0, 0.0),
+            edgeInsets: EdgeInsets.fromLTRB(20.0, 15.0, 0.0, 0.0),
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
         PaddedText(
             text: "jsmithexample@oregonstate.edu",
-            edgeInsets: EdgeInsets.fromLTRB(8.0, 0.0, 0.0, 0.0),
+            edgeInsets: EdgeInsets.fromLTRB(20.0, 0.0, 0.0, 0.0),
             style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400)),
         PaddedText(
             text: "https://github.com/jsmith",
-            edgeInsets: EdgeInsets.fromLTRB(8.0, 0.0, 0.0, 0.0),
+            edgeInsets: EdgeInsets.fromLTRB(20.0, 0.0, 0.0, 0.0),
             style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400)),
       ],
     );
@@ -79,7 +79,7 @@ class _ResumeCardState extends State<ResumeCard> {
       children: <Widget>[
         PaddedText(
             text: "Software Developer Intern",
-            edgeInsets: EdgeInsets.fromLTRB(0.0, 6.0, 0.0, 0.0),
+            edgeInsets: EdgeInsets.fromLTRB(5.0, 6.0, 0.0, 0.0),
             style: TextStyle(fontSize: 14, fontWeight: FontWeight.w800)),
       ],
     );
@@ -101,7 +101,7 @@ class _ResumeCardState extends State<ResumeCard> {
           text: "2016-Present",
           edgeInsets: EdgeInsets.all(0.0),
           style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-          textAlign: TextAlign.center, // Left align
+          textAlign: TextAlign.left, // Left align
         )),
         Expanded(
             child: PaddedText(
